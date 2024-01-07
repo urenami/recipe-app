@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Recipes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/styles.css' %}">
+    <style type="text/css">
+        body {
+            background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            max-width: 300px; 
+            height: auto;
+            background: transparent;
+            display: block;
+            margin: 250px 0 auto;
+        }
+
+
+        .recipe_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 10px;
+            margin: 2rem;
+            text-align: center; 
+        }
+
+        .grid_item {
+            box-shadow: 0 4px 10px 4px #2c2c2c;
+            text-align: center;
+            background-color: #ffffff;
+            color: #2c2c2c;
+            border-radius: 20px;
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .recipe_name {
+            color: #2c2c2c;
+            font-size: 25px;
+            text-decoration: none;
+            font-family: "Roboto Mono", "Calibri", "Trebuchet MS", sans-serif;
+            font-variant: small-caps;
+        }
+
+        .recipe_name:hover {
+            color: #545454;
+            transition: 200ms;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="{% static 'recipes/images/recipes.png' %}" alt="Recipes Logo">
+    </header>
+
+    <div class="recipe_grid">
+        {% for object in object_list %}
+        <div class="grid_item">
+            <h4><a class="recipe_name" href="{{object.get_absolute_url}}"> {{object.name}} </a></h4>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
