@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 {% load static %}
 
 <html lang="en">
@@ -33,17 +32,59 @@
 
         .details_short {
             text-align: left;
-            font-size: 20px; /
+            font-size: 20px;
         }
 
-        .login_btn {
+        .login_btn,
+        .logout_btn {
             margin-top: 20px;
-            font-size: 18px; 
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .logout_btn {
+            margin-left: auto;
+            margin-right: 20px;
+            border-radius: 5px;
+            color: #ffffff;
+        }
+
+        .back_btn {
+            font-size: 18px;
+            padding: 5px 10px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 60px auto;
         }
     </style>
 </head>
 
 <body>
+    <div class="nav-bar">
+        <a href="{%url 'logout' %}" class="logout_btn"> Logout</a>
+    </div>
     <div class="details_modal">
         <h2>{{object.name}}</h2>
         <img class="food_image" src="{{object.pic.url}}" />
@@ -55,15 +96,10 @@
                 <b>Ingredients: </b> {{object.ingredients}} <br><br>
             </div>
             <div class="details_long">
-                <button onclick="goBack()" class="login_btn">Back</button>
+                <a href="javascript:history.back()" class="back_btn">Back</a>
             </div>
         </div>
     </div>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
 </body>
 
 </html>

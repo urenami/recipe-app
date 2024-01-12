@@ -21,6 +21,7 @@
 
         img {
             border-radius: 15px;
+            margin-top: 20px;
         }
 
         .main-page-btn {
@@ -32,11 +33,36 @@
             border-radius: 5px;
             font-size: 18px;
         }
+
+        .nav-bar {
+            display: flex;
+            justify-content: flex-end;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            padding: 10px; 
+            background-color: rgba(255, 255, 255, 0.5); 
+        }
+
+
+        .login_btn {
+            margin-right: 20px;
+            margin-left: 10px;
+            border-radius: 5px;
+            color: #000;
+            margin-top: 20px;
+            margin-bottom: 80px;
+            height: 25px;
+        }
     </style>
 </head>
 
 <body>
-    <img src="{% static 'recipes/images/welcome.png' %}" />
+    <div class="nav-bar">
+        <a href="{% url 'login' %}" class="login_btn"> Login</a>
+    </div>
+    <img class="welcome-img" src="{% static 'recipes/images/welcome.png' %}" alt="Welcome Image" />
 </body>
 
 </html>
