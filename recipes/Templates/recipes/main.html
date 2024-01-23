@@ -11,76 +11,89 @@
             background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat fixed;
             background-size: cover;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
         }
 
-        header {
+        .page-header {
             text-align: center;
-            padding: 20px;
-        }
-
-        .logo {
-            max-width: 300px; 
-            height: auto;
-            background: transparent;
-            display: block;
-            margin: 250px 0 auto;
-        }
-
-
-        .recipe_grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            grid-gap: 10px;
-            margin: 2rem;
-            text-align: center; 
-        }
-
-        .grid_item {
-            box-shadow: 0 4px 10px 4px #2c2c2c;
-            text-align: center;
-            background-color: #ffffff;
-            color: #2c2c2c;
-            border-radius: 20px;
-            position: relative;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .recipe_name {
-            color: #2c2c2c;
-            font-size: 25px;
-            text-decoration: none;
-            font-family: "Roboto Mono", "Calibri", "Trebuchet MS", sans-serif;
-            font-variant: small-caps;
-        }
-
-        .recipe_name:hover {
-            color: #545454;
-            transition: 200ms;
-        }
-
-        .nav-bar {
-            display: flex;
-            justify-content: flex-end;
+            color: #fff; 
+            margin-bottom: 10px; 
+            padding: 5px 0; 
+            background-color: rgba(255, 255, 255, 0.5); 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2;
         }
 
         .logout_btn {
-            margin-right: 20px;
+            margin-left: 10px;
+            margin-right: 10px; 
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #2c2c2c; 
+            text-decoration: none;
+        }
+
+        .logo {
+            max-width: 200px; 
+            height: auto;
+            background: transparent;
+            display: block;
+            margin: 0 auto; 
+            margin-left: 625px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .recipe_grid {
+            margin-top: 150px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grid_item {
+            position: relative;
+            z-index: 1;
+        }
+
+        .search_btn, .logout_btn {
             margin-left: 10px;
             border-radius: 5px;
-            color: #000;
+            color: #ffffff;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #2c2c2c;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .search_btn:hover, .logout_btn:hover {
+            background-color: #545454;
+            transition: 200ms;
         }
     </style>
 </head>
 
 <body>
     <div class="nav-bar">
-        <a href="{%url 'logout' %}" class="logout_btn"> Logout</a>
+        <div class="page-header">
+            <img class="logo" src="{% static 'recipes/images/recipes.png' %}" alt="Recipes Logo">
+            <form action="{% url 'recipes:search' %}" method="GET" class="form">
+                {% csrf_token %}
+                <button type="submit" class="search_btn">Search</button>
+            </form>
+            <a href="{%url 'logout' %}" class="logout_btn"> Logout</a>
+        </div>
     </div>
+
     <header>
         <img class="logo" src="{% static 'recipes/images/recipes.png' %}" alt="Recipes Logo">
     </header>
@@ -92,6 +105,13 @@
         </div>
         {% endfor %}
     </div>
+    
+    {% if chart %}
+        <div class="chart-container">
+            <img src="data:image/png;base64, {{ chart }}" alt="Chart">
+        </div>
+    {% endif %}
+    
 </body>
 
 </html>
