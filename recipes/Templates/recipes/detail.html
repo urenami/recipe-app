@@ -1,109 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
+
 {% load static %}
-
 <html lang="en">
-
-<head>
+  <head>
     <title>Details</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'recipes/css/styles.css' %}"
+    />
     <style type="text/css">
-        body {
-            background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat fixed;
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
+      body {
+        background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat
+          fixed;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
 
-        .details_modal {
-            text-align: center;
-        }
+      .details_modal {
+        text-align: center;
+      }
 
-        .food_image {
-            border-radius: 15px;
-        }
+      .food_image {
+        border-radius: 15px;
+      }
 
-        .details_body {
-            margin-top: 20px;
-        }
+      .details_body {
+        margin-top: 20px;
+      }
 
-        .details_short {
-            text-align: left;
-            font-size: 20px;
-        }
+      .details_short {
+        text-align: left;
+        font-size: 20px;
+      }
 
-        .login_btn,
-        .logout_btn {
-            margin-top: 20px;
-            font-size: 18px;
-            padding: 10px 20px;
-            background-color: #2c2c2c;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+      .list_btn,
+      .logout_btn {
+        font-size: 18px;
+        padding: 10px 15px;
+        height: 25px;
+        background-color: #2c2c2c;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-right: 40px;
+      }
 
-        .nav-bar {
-            display: flex;
-            align-items: center;
-            padding: 10px 30px;
-            margin-left: -20px; 
-            margin-right: -20px; 
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 85px;
-            background-color: rgba(255, 255, 255, 0.5);
-            z-index: 2;
-        }
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 10px 30px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 85px;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 2;
+      }
 
-        .logout_btn {
-            margin-left: auto;
-            margin-right: 20px; 
-            margin-top: 15px;
-            border-radius: 5px;
-            color: #ffffff;
-        }
+      .back_btn {
+        font-size: 18px;
+        padding: 5px 10px;
+        background-color: #2c2c2c;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 60px auto;
+      }
 
-        .back_btn {
-            font-size: 18px;
-            padding: 5px 10px;
-            background-color: #2c2c2c;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin: 60px auto;
-        }
+      .logout_btn {
+        margin-right: 20px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="nav-bar">
-        <a href="{%url 'logout' %}" class="logout_btn"> Logout</a>
+      <a href="{%url 'logout' %}" class="logout_btn">Logout</a>
+      <a href="{% url 'recipes:list' %}" class="list_btn">List</a>
     </div>
     <div class="details_modal">
-        <h2>{{object.name}}</h2>
-        <img class="food_image" src="{{object.pic.url}}" />
-        <div class="details_body">
-            <div class="details_short">
-                <b>Name: </b> {{object.name}} <br>
-                <b>Cooking Time: </b> {{object.cooking_time}} <br>
-                <b>Difficulty: </b> {{object.calculate_difficulty}} <br>
-                <b>Ingredients: </b> {{object.ingredients}} <br><br>
-            </div>
-            <div class="details_long">
-                <a href="javascript:history.back()" class="back_btn">List</a>
-            </div>            
+      <h2>{{object.name}}</h2>
+      <img class="food_image" src="{{object.pic.url}}" />
+      <div class="details_body">
+        <div class="details_short">
+          <b>Name: </b> {{object.name}} <br />
+          <b>Cooking Time: </b> {{object.cooking_time}} <br />
+          <b>Difficulty: </b> {{object.calculate_difficulty}} <br />
+          <b>Ingredients: </b> {{object.ingredients}} <br /><br />
         </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

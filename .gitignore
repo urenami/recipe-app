@@ -1,5 +1,6 @@
 # Text backup files
 *.backup
+*settings.py
 
 # Database
 *.sqlite3
