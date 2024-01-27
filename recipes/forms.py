@@ -1,16 +1,8 @@
 from django import forms
 
-CHART__CHOICES = (
-    ('#1', 'Bar chart'),
-    ('#2', 'Pie chart'),
-    ('#3', 'Line chart')
-)
+CHART__CHOICES = (("#1", "Bar chart"), ("#2", "Pie chart"), ("#3", "Line chart"))
 
-DIFFIC__CHOICES = (
-    ('#1', 'Easy'),
-    ('#2', 'Intermediate'),
-    ('#3', 'Hard')
-)
+DIFFIC__CHOICES = (("#1", "Easy"), ("#2", "Intermediate"), ("#3", "Hard"))
 
 
 class RecipeSearchForm(forms.Form):

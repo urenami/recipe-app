@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat
+          fixed;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 100vh;
+        position: relative;
+        color: #fff;
+        text-align: center;
+      }
+
+      .back-btn {
+        font-size: 18px;
+        padding: 10px 20px;
+        background-color: #2c2c2c;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      div {
+        max-width: 800px;
+        width: 90%;
+        margin: 50px auto 20px;
+        padding: 20px;
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h1,
+      h2,
+      p,
+      ul,
+      li {
+        margin: 10px 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 20px;
+      }
+
+      li {
+        font-size: 1.2em;
+        line-height: 1.6;
+      }
+
+      .back-btn:hover {
+        background-color: #1a1a1a;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="javascript:history.back()" class="back-btn">Back</a>
+
+    <div>
+      <h1>Welcome to my Recipe App!</h1>
+
+      <p>
+        Hi there! I'm Michael, a dedicated developer passionate about bringing
+        innovative solutions to life. My latest project is a Recipe App,
+        designed to make your culinary journey delightful and stress-free.
+      </p>
+
+      <h2>Key Features:</h2>
+      <ul>
+        <li>
+          <b>Recipe Search:</b> Effortlessly find your favorite recipes with our
+          search functionality.
+        </li>
+        <li>
+          <b>User-Friendly Interface:</b> Enjoy a clean and intuitive design for
+          a seamless user experience.
+        </li>
+        <li>
+          <b>Filter by Difficulty:</b> Whether you're a beginner or a master
+          chef, filter recipes based on difficulty levels.
+        </li>
+        <li>
+          <b>Detailed Recipe Information:</b> Access detailed information,
+          including cooking time, ingredients, and more.
+        </li>
+      </ul>
+
+      <h2>Challenges Overcome:</h2>
+      <p>
+        Developing a visually appealing and responsive user interface was a
+        significant challenge. The CSS hurdles were tackled head-on to create a
+        sleek and user-friendly design, ensuring a delightful experience for
+        every user.
+      </p>
+
+      <h2>Current Endeavors:</h2>
+      <p>
+        I'm continually working on enhancing the Recipe App, exploring new
+        features, and refining the user interface. Stay tuned for exciting
+        updates!
+      </p>
+
+      <h2>Explore My Portfolio:</h2>
+      <p>
+        Feel free to explore
+        <a href="https://urenami.github.io/portfolio-website/" target="_blank"
+          >my portfolio</a
+        >
+        for a closer look at the Recipe App and other projects. Your feedback is
+        highly appreciated.
+      </p>
+
+      <h2>Connect with Me:</h2>
+      <p>
+        Questions, suggestions, or just want to say hi? Connect with me on
+        GitHub and LinkedIn. Your support keeps the development kitchen
+        sizzling!
+      </p>
+
+      <p>Happy cooking!</p>
+    </div>
+  </body>
+</html>

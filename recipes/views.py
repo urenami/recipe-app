@@ -6,6 +6,9 @@ from .forms import RecipeSearchForm
 import pandas as pd
 from .utils import get_chart, get_recipename_from_id
 
+def about_me(request):
+    return render(request, 'recipes/aboutme.html')
+
 def welcome(request):
     return render(request, 'recipes/welcome.html')
 
