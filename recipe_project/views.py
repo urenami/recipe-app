@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 def login_view(request):
     error_message = None
@@ -28,7 +31,9 @@ def login_view(request):
 
     return render(request, 'auth/login.html', context)
 
+from django.shortcuts import redirect
+from django.contrib.auth import logout
 
 def logout_view(request):
     logout(request)
-    return render(request, 'auth/success.html')
+    return redirect('recipes:login')
