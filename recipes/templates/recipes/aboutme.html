@@ -1,64 +1,74 @@
 <!DOCTYPE html>
 
-{% load static %}
+{% load static %} <!-- Load Django static files for images, CSS, etc. -->
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me</title>
+    <meta charset="UTF-8" /> <!-- Set character encoding to UTF-8 for proper text display -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Make the page responsive on mobile devices -->
+    <meta
+      name="description"
+      content="Michael's personal page where he shares his journey in developing a Recipe App, featuring key functionalities, challenges, and ways to connect with him."
+    />
+    <meta
+      name="keywords"
+      content="Michael, developer, Recipe App, culinary, cooking, development, portfolio, GitHub, LinkedIn"
+    />
+    <title>About Me</title> <!-- Title displayed on the browser tab -->
+    
     <style>
+      /* General styling for the body */
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat
-          fixed;
-        background-size: cover;
-        display: flex;
+        margin: 0; 
+        padding: 0; 
+        background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat fixed; 
+        background-size: cover; 
+        display: flex; 
         align-items: center;
         justify-content: center;
-        flex-direction: column;
-        min-height: 100vh;
+        min-height: 100vh; 
         position: relative;
-        color: #fff;
+        color: #fff; 
         text-align: center;
       }
 
+      /* Back button styling */
       .back-btn {
         font-size: 18px;
         padding: 10px 20px;
         background-color: #2c2c2c;
         color: #ffffff;
-        text-decoration: none;
-        border-radius: 5px;
+        text-decoration: none; 
+        border-radius: 5px; 
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease; 
         position: absolute;
         top: 20px;
         right: 20px;
       }
 
+      .back-btn:hover {
+        background-color: #1a1a1a; 
+      }
+
+      /* Container box styling */
       div {
-        max-width: 800px;
+        max-width: 800px; 
         width: 90%;
         margin: 50px auto 20px;
         padding: 20px;
         box-sizing: border-box;
-        background: rgba(0, 0, 0, 0.7);
-        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.7); 
+        border-radius: 10px; 
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
       }
 
-      h1,
-      h2,
-      p,
-      ul,
-      li {
+      /* Headings and text spacing */
+      h1, h2, p, ul, li {
         margin: 10px 0;
-        padding: 0;
       }
 
       h1 {
@@ -72,27 +82,35 @@
         margin-bottom: 20px;
       }
 
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        margin-bottom: 20px;
+      /* Font styling for specific elements */
+      .back-btn, h1, h2 {
+        font-family: "Pacifico", cursive; 
       }
 
-      li {
-        font-size: 1.2em;
-        line-height: 1.6;
-      }
+      /* Responsive design for smaller screens */
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px; 
+        }
 
-      .back-btn:hover {
-        background-color: #1a1a1a;
+        .back-btn {
+          font-size: 16px;
+          padding: 8px 15px;
+        }
+
+        div {
+          width: 95%; 
+          margin: 30px auto 10px;
+        }
       }
     </style>
   </head>
 
   <body>
+    <!-- Back button to return to the previous page -->
     <a href="javascript:history.back()" class="back-btn">Back</a>
 
+    <!-- Main content container -->
     <div>
       <h1>Welcome to my Recipe App!</h1>
 
@@ -102,26 +120,16 @@
         designed to make your culinary journey delightful and stress-free.
       </p>
 
+      <!-- List of key features of the Recipe App -->
       <h2>Key Features:</h2>
       <ul>
-        <li>
-          <b>Recipe Search:</b> Effortlessly find your favorite recipes with our
-          search functionality.
-        </li>
-        <li>
-          <b>User-Friendly Interface:</b> Enjoy a clean and intuitive design for
-          a seamless user experience.
-        </li>
-        <li>
-          <b>Filter by Difficulty:</b> Whether you're a beginner or a master
-          chef, filter recipes based on difficulty levels.
-        </li>
-        <li>
-          <b>Detailed Recipe Information:</b> Access detailed information,
-          including cooking time, ingredients, and more.
-        </li>
+        <li><b>Recipe Search:</b> Effortlessly find your favorite recipes with our search functionality.</li>
+        <li><b>User-Friendly Interface:</b> Enjoy a clean and intuitive design for a seamless user experience.</li>
+        <li><b>Filter by Difficulty:</b> Whether you're a beginner or a master chef, filter recipes based on difficulty levels.</li>
+        <li><b>Detailed Recipe Information:</b> Access detailed information, including cooking time, ingredients, and more.</li>
       </ul>
 
+      <!-- Section explaining challenges faced during development -->
       <h2>Challenges Overcome:</h2>
       <p>
         Developing a visually appealing and responsive user interface was a
@@ -130,6 +138,7 @@
         every user.
       </p>
 
+      <!-- Section explaining current progress -->
       <h2>Current Endeavors:</h2>
       <p>
         I'm continually working on enhancing the Recipe App, exploring new
@@ -137,21 +146,19 @@
         updates!
       </p>
 
+      <!-- Link to portfolio -->
       <h2>Explore My Portfolio:</h2>
       <p>
         Feel free to explore
-        <a href="https://urenami.github.io/portfolio-website/" target="_blank"
-          >my portfolio</a
-        >
-        for a closer look at the Recipe App and other projects. Your feedback is
-        highly appreciated.
+        <a href="https://urenami.netlify.app/" target="_blank" aria-label="Visit Michael's portfolio website">My Portfolio</a>
+        for a closer look at the Recipe App and other projects. Your feedback is highly appreciated.
       </p>
 
+      <!-- Section for contact information -->
       <h2>Connect with Me:</h2>
       <p>
         Questions, suggestions, or just want to say hi? Connect with me on
-        GitHub and LinkedIn. Your support keeps the development kitchen
-        sizzling!
+        GitHub and LinkedIn. Your support keeps the development kitchen sizzling!
       </p>
 
       <p>Happy cooking!</p>
