@@ -95,9 +95,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Authentication settings
-LOGIN_URL = "/"
-LOGIN_REDIRECT_URL = "/list/"  # Redirect to the homepage upon successful login
-LOGOUT_REDIRECT_URL = "/login/"  # Redirect to the login page after logout
+LOGIN_URL = '/accounts/login/' # where to go if user is not logged in
+LOGIN_REDIRECT_URL = '/list/' # after successful login
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

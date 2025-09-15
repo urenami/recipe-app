@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.views import LogoutView
 
-def login_view(request):
-    return render(request, 'users/login.html')
+class CustomLogoutView(LogoutView):
+    next_page = '/accounts/login/'  # where to redirect after logout
 
-def logout_view(request):
-    return HttpResponse("This is a placeholder logout view.")
+    # Override to allow GET requests
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)

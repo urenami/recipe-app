@@ -1,0 +1,112 @@
+[
+  {
+    "model": "recipes.recipe",
+    "pk": 1,
+    "fields": {
+      "name": "Avocado Toast",
+      "cooking_time": 10,
+      "difficulty": "Easy",
+      "ingredients": "bread, avocado, salt, pepper, olive oil",
+      "pic": "recipes/avocado_wlPtT1v.jpg"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 2,
+    "fields": {
+      "name": "Berry Parfait",
+      "cooking_time": 15,
+      "difficulty": "Easy",
+      "ingredients": "greek yogurt, granola, strawberries, blueberries, honey",
+      "pic": "recipes/berryparfait_PWovi23.jpg"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 3,
+    "fields": {
+      "name": "Chocolate Chip Cookies",
+      "cooking_time": 25,
+      "difficulty": "Easy",
+      "ingredients": "flour, sugar, butter, eggs, chocolate chips, vanilla extract",
+      "pic": "recipes/chchipcookies.jpg"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 4,
+    "fields": {
+      "name": "Chicken Parmesan",
+      "cooking_time": 45,
+      "difficulty": "Intermediate",
+      "ingredients": "chicken breast, marinara sauce, mozzarella, parmesan, breadcrumbs",
+      "pic": "recipes/chickenparm_KdHqoWk.jpg"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 5,
+    "fields": {
+      "name": "Cookies & Cream Brownies",
+      "cooking_time": 50,
+      "difficulty": "Intermediate",
+      "ingredients": "flour, sugar, cocoa powder, eggs, butter, cream, chocolate cookies",
+      "pic": "recipes/cream_WdaVRkC.png"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 6,
+    "fields": {
+      "name": "Fajitas",
+      "cooking_time": 30,
+      "difficulty": "Easy",
+      "ingredients": "chicken, bell peppers, onions, tortillas, spices",
+      "pic": "recipes/fajita_9dY3maC.jpg"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 7,
+    "fields": {
+      "name": "Flatbread Pizza",
+      "cooking_time": 20,
+      "difficulty": "Easy",
+      "ingredients": "flatbread, tomato sauce, mozzarella, pepperoni, basil",
+      "pic": "recipes/flatpizza_ukB3FYp.png"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 8,
+    "fields": {
+      "name": "Mango Banana Smoothie",
+      "cooking_time": 5,
+      "difficulty": "Easy",
+      "ingredients": "mango, banana, yogurt, honey, ice",
+      "pic": "recipes/mangoban_uBUbcp6.png"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 9,
+    "fields": {
+      "name": "Strawberry Shortcake",
+      "cooking_time": 50,
+      "difficulty": "Intermediate",
+      "ingredients": "strawberries, flour, sugar, butter, cream",
+      "pic": "recipes/shortcake_eBtVMgb.jpg"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 10,
+    "fields": {
+      "name": "Tres Leches Cake",
+      "cooking_time": 90,
+      "difficulty": "Hard",
+      "ingredients": "flour, eggs, milk, condensed milk, evaporated milk, whipped cream",
+      "pic": "recipes/tresleche_9JRV0nH.png"
+    }
+  }
+]

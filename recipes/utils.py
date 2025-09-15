@@ -5,71 +5,65 @@ import matplotlib.pyplot as plt
 
 # Function to get the recipe name from a given ID
 def get_recipename_from_id(val):
-    # Fetch the recipe object from the database using the ID
     recipename = Recipe.objects.get(id=val)
     return recipename
 
 # Function to generate a graph and return it as a base64-encoded string
 def get_graph():
-    # Create an in-memory buffer to store the graph image
     buffer = BytesIO()
-
-    # Save the current plot to the buffer in PNG format
-    plt.savefig(buffer, format="png")
-
-    # Move the pointer to the beginning of the buffer
+    plt.savefig(buffer, format="png", transparent=True)  # transparent background
     buffer.seek(0)
-
-    # Get the raw image data from the buffer
     image_png = buffer.getvalue()
-
-    # Encode the image to base64 for use in web applications
-    graph = base64.b64encode(image_png)
-
-    # Decode the base64-encoded image to a UTF-8 string
-    graph = graph.decode("utf-8")
-
-    # Close the buffer to free up resources
+    graph = base64.b64encode(image_png).decode("utf-8")
     buffer.close()
-
-    # Return the base64 string of the graph
     return graph
 
 # Function to generate a chart (bar, pie, or line) based on the provided chart type
 def get_chart(chart_type, data, **kwargs):
-    # Switch to the AGG backend for rendering images (this is for non-interactive environments)
     plt.switch_backend("AGG")
+    plt.figure(figsize=(6, 4), facecolor="none")
 
-    # Increase figure size for better visibility of charts
-    fig = plt.figure(figsize=(6, 3))  # Adjusted figure size for a more horizontal layout
+    # 🔥 Dark theme + fonts
+    plt.rcParams.update({
+        "text.color": "white",
+        "axes.labelcolor": "white",
+        "xtick.color": "white",
+        "ytick.color": "white",
+        "font.family": "Poppins"
+    })
 
-    # Check the chart type and create the respective chart
-    if chart_type == "#1":
-        # Create a bar chart (cooking time vs. recipe name)
-        plt.bar(data["name"], data["cooking_time"])
+    # 🎨 Color map based on difficulty
+    difficulty = None
+    if "difficulty" in data.columns:
+        difficulty = data["difficulty"].iloc[0]
 
-        # Rotate x-axis labels to avoid overlap (important for long recipe names)
-        plt.xticks(rotation=45, ha='right')  # Rotate labels 45 degrees to the right
+    color_map = {
+        "Easy": "#00ff00",         # green
+        "Intermediate": "#ffa500", # orange
+        "Hard": "#ff4c4c",         # red
+    }
+    color = color_map.get(difficulty, "#00ff00")  # default green
 
-    elif chart_type == "#2":
-        # Create a pie chart (cooking time distribution)
-        labels = kwargs.get("labels")  # Get additional labels from kwargs if provided
-        plt.pie(data["cooking_time"], labels=labels, autopct='%1.1f%%')  # Display percentage on the pie slices
+    if chart_type == "#1":  # bar chart
+        plt.bar(data["name"], data["cooking_time"], color=color)
+        plt.xticks(rotation=45, ha="right")
 
-    elif chart_type == "#3":
-        # Create a line chart (cooking time vs. recipe name)
-        plt.plot(data["name"], data["cooking_time"])
+    elif chart_type == "#2":  # pie chart
+        labels = kwargs.get("labels")
+        plt.pie(
+            data["cooking_time"],
+            labels=labels,
+            autopct="%1.1f%%",
+            colors=[color] * len(data)
+        )
 
-        # Rotate x-axis labels for better readability in line charts
-        plt.xticks(rotation=45, ha='right')  # Rotate labels for line chart as well if needed
+    elif chart_type == "#3":  # line chart
+        plt.plot(data["name"], data["cooking_time"], marker="o", color=color)
+        plt.xticks(rotation=45, ha="right")
 
     else:
-        # If the chart type is unknown, print a message (could be handled better)
         print("Unknown chart type")
 
-    # Adjust the layout to prevent overlapping elements
     plt.tight_layout()
-
-    # Generate the graph image and return it as a base64-encoded string
     chart = get_graph()
     return chart

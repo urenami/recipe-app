@@ -1,131 +1,154 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-  <head>
-    <title>Details</title>
-    <meta
-      name="description"
-      content="Detailed view of the recipe '{{object.name}}' from Michael's Recipe App, including cooking time, difficulty, and ingredients."
-    />
-    <meta
-      name="keywords"
-      content="recipe, {{object.name}}, cooking time, difficulty, ingredients, Michael's Recipe App"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'recipes/css/styles.css' %}"
-    />
-    <style>
-      body {
-        background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat
-          fixed;
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        color: #fff;
-      }
+{% extends "base.html" %} {% load static %} {% block content %}
 
-      .details_modal {
-        text-align: center;
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        max-width: 800px;
-        width: 90%;
-        margin: 85px auto 20px;
-      }
+<link
+  href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap"
+  rel="stylesheet"
+/>
 
-      .food_image {
-        border-radius: 15px;
-        max-width: 100%;
-        height: auto;
-      }
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+      url("{% static 'recipes/images/dough.jpg' %}") no-repeat center center
+        fixed;
+    background-size: cover;
+    margin: 0;
+  }
 
-      .details_body {
-        margin-top: 20px;
-      }
+  .details-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 700px;
+    width: 90%;
+    margin: 100px auto;
+    text-align: center;
+    color: #fff;
+    animation: fadeInUp 0.9s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
 
-      .details_short {
-        text-align: left;
-        font-size: 20px;
-        color: #000;
-      }
+  .details-card h2 {
+    font-family: "Pacifico", cursive;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffd700; /* gold */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  }
 
-      .list_btn,
-      .logout_btn {
-        font-family: "Pacifico", cursive;
-        font-size: 18px;
-        padding: 10px 20px;
-        background-color: #2c2c2c;
-        color: #ffffff;
-        text-decoration: none;
-        border-radius: 5px;
-        margin: 10px; /* Adjust this if you want less space between buttons */
-        display: inline-block;
-        text-align: center;
-        cursor: pointer;
-        border: none;
-        transition: background-color 0.3s ease;
-        min-width: 100px;
-      }
+  .food_image {
+    border-radius: 12px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    transition: transform 0.3s ease;
+  }
 
-      .list_btn:hover,
-      .logout_btn:hover {
-        background-color: #1a1a1a;
-        transform: scale(1.05);
-      }
+  .food_image:hover {
+    transform: scale(1.05);
+  }
 
-      .nav-bar {
-        display: flex;
-        justify-content: center; /* This centers the content inside */
-        background-color: rgba(255, 255, 255, 0.5);
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100;
-        z-index: 3;
-        align-items: center;
-        padding: 5px 20px;
-       
-      }
+  .details-info {
+    text-align: left;
+    font-size: 1.1rem;
+    color: #fff;
+    line-height: 1.6;
+  }
 
-      @media (max-width: 768px) {
-        .list_btn,
-        .logout_btn {
-          font-size: 16px;
-          padding: 10px 15px;
-        }
-      }
-    </style>
-  </head>
+  .details-info p {
+    margin: 12px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3); /* soft gold divider */
+  }
 
-  <body>
-    <div class="nav-bar">
-      <a href="{% url 'logout' %}" class="logout_btn">Logout</a>
-      <a href="{% url 'recipes:list' %}" class="list_btn">List</a>
-    </div>
-    <div class="details_modal">
-      <h2>{{ object.name }}</h2>
-      <img
-        class="food_image"
-        src="{{ object.pic.url }}"
-        alt="{{ object.name }}"
-      />
-      <div class="details_body">
-        <div class="details_short">
-          <b>Name: </b> {{ object.name }} <br />
-          <b>Cooking Time: </b> {{ object.cooking_time }} <br />
-          <b>Difficulty: </b> {{ object.calculate_difficulty }} <br />
-          <b>Ingredients: </b> {{ object.ingredients }} <br /><br />
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+  .details-info b {
+    color: #ffd700;
+  }
+
+  .btn-group {
+    margin-top: 25px;
+  }
+
+  .btn {
+    display: inline-block;
+    margin: 8px;
+    padding: 12px 24px;
+    background: #2c2c2c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: "Pacifico", cursive;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: #444;
+    transform: scale(1.05);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .difficulty.easy {
+    color: #00ff00; /* bright green */
+    font-weight: bold;
+  }
+
+  .difficulty.intermediate {
+    color: #ffa500; /* gold */
+    font-weight: bold;
+  }
+
+  .difficulty.hard {
+    color: #ff4c4c; /* red */
+    font-weight: bold;
+  }
+</style>
+
+<div class="details-card">
+  <h2>{{ object.name }}</h2>
+  <img class="food_image" src="{{ object.pic.url }}" alt="{{ object.name }}" />
+
+  <div class="details-info">
+    <p><b>Name:</b> {{ object.name }}</p>
+    <p><b>Cooking Time:</b> {{ object.cooking_time }} mins</p>
+    <p>
+      <b>Difficulty:</b>
+      <span class="difficulty {{ object.calculate_difficulty|lower }}">
+        {{ object.calculate_difficulty }}
+      </span>
+    </p>
+    <p><b>Ingredients:</b> {{ object.ingredients }}</p>
+  </div>
+
+  <div class="btn-group">
+    <form action="{% url 'logout' %}" method="post" style="display: inline">
+      {% csrf_token %}
+      <button type="submit" class="btn">Logout</button>
+    </form>
+    <a href="{% url 'recipes:list' %}" class="btn">Back to List</a>
+  </div>
+</div>
+
+{% endblock %}
