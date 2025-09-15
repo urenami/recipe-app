@@ -1,101 +1,96 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Welcome | Recipe App</title>
-  <link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      font-family: "Poppins", sans-serif;
-    }
-
-    .welcome-card {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 40px;
-      border-radius: 12px;
-      text-align: center;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-
-      /* Animation */
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out forwards;
-    }
-
-    .logo {
-      width: 120px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-family: "Pacifico", cursive;
-      font-size: 2em;
-      margin-bottom: 15px;
-      color: #2c2c2c;
-    }
-
-    p {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-      color: #444;
-    }
-
-    /* Stylish Button same as login.html */
-    .login-btn {
-      padding: 12px 28px;
-      background: #2c2c2c;
-      color: #ffffff;
-      font-family: "Pacifico", cursive;
-      font-size: 20px;
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      display: inline-block;
-      text-decoration: none;
-    }
-
-    .login-btn:hover {
-      background: #444;
-      transform: scale(1.05);
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
+  <head>
+    <title>Welcome | Recipe App</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+          url("{% static 'recipes/images/dough.jpg' %}") no-repeat center center
+          fixed;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="welcome-card">
-    <img src="{% static 'recipes/images/recipes.png' %}" alt="Logo" class="logo" />
-    <h1>Welcome to My Recipe App!</h1>
-    <p>Discover delicious recipes and save your favorites.</p>
-    <a href="{% url 'login' %}" class="login-btn">Login</a>
-  </div>
-</body>
+      .hero {
+        text-align: center;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(12px);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        max-width: 500px;
+        animation: popIn 0.8s ease;
+      }
+
+      .hero h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 2.5rem;
+        color: #ffd700;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        line-height: 1.6;
+        color: #f1f1f1;
+      }
+
+      .btn {
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-family: "Pacifico", cursive;
+        font-size: 1.2rem;
+        color: #fff;
+        background: linear-gradient(135deg, #2c2c2c, #444);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+      }
+
+      .btn:hover {
+        background: linear-gradient(135deg, #444, #2c2c2c);
+        transform: scale(1.05);
+        box-shadow: 0 0 10px #ffd700;
+      }
+
+      @keyframes popIn {
+        0% {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Welcome to My Recipe App!</h1>
+      <p>
+        🍳 Discover delicious recipes, filter them by difficulty, and view
+        cooking analytics with interactive charts.  
+        <br /><br />
+        Built with <b>Django</b>, <b>Matplotlib</b>, and a touch of
+        <b>glassmorphic design</b>.
+      </p>
+      <a href="{% url 'login' %}" class="btn">Login</a>
+    </div>
+  </body>
 </html>
