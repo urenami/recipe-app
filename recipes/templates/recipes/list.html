@@ -4,6 +4,7 @@
     <title>Recipes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% load static %}
+    {% load slugify %}
 
     <!-- Fonts to match login page -->
     <link
@@ -13,8 +14,7 @@
 
     <style>
       body {
-        background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat
-          fixed;
+        background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat fixed;
         background-size: cover;
         display: flex;
         flex-direction: column;
@@ -62,7 +62,7 @@
         font-family: "Pacifico", cursive;
         font-size: 42px;
         text-align: center;
-        color: #ffd700; 
+        color: #ffd700;
         margin: 30px auto 40px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
       }
@@ -138,7 +138,7 @@
       {% for object in object_list %}
       <div class="grid_item">
         <a href="{{ object.get_absolute_url }}">
-          <img src="{{ object.pic.url }}" alt="{{ object.name }}" />
+          <img src="{% static 'recipes/images/' %}{{ object.name|slugify }}.jpg" alt="{{ object.name }}">
           <h4><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></h4>
         </a>
       </div>
