@@ -22,10 +22,9 @@
         justify-content: center;
         min-height: 100vh;
         margin: 0;
-        padding-top: 60px; /* only on list.html */
+        padding-top: 60px;
       }
 
-      /* Navbar: centered with even gaps, no cutoff on the right */
       .page-header {
         position: fixed;
         top: 0;
@@ -33,9 +32,9 @@
         right: 0;
         z-index: 10;
         display: flex;
-        justify-content: center; /* center the 3 buttons */
+        justify-content: center;
         align-items: center;
-        gap: 20px; /* even spacing */
+        gap: 20px;
         padding: 15px 24px;
         background: rgba(255, 255, 255, 0.3);
         backdrop-filter: blur(10px);
@@ -59,30 +58,27 @@
         transform: scale(1.05);
       }
 
-      /* Logo */
-      .logo {
-        max-width: 180px;
-        display: block;
+      .logo-text {
+        font-family: "Pacifico", cursive;
+        font-size: 42px;
+        text-align: center;
+        color: #ffd700; /* yellow */
         margin: 30px auto 40px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
       }
 
-      /* ===== Recipe Grid (flexbox) =====
-         - consistent card width
-         - centered last row
-      */
       .recipe_grid {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center; /* <- centers the last row */
+        justify-content: center;
         gap: 20px;
         padding: 0 20px 40px;
         max-width: 1200px;
         margin: 0 auto;
       }
 
-      /* Card */
       .grid_item {
-        flex: 0 0 280px; /* fixed, consistent card width */
+        flex: 0 0 280px;
         max-width: 280px;
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(10px);
@@ -104,8 +100,8 @@
 
       .grid_item img {
         width: 100%;
-        height: 180px; /* uniform image height */
-        object-fit: cover; /* crop nicely */
+        height: 180px;
+        object-fit: cover;
         border-radius: 12px;
         margin-bottom: 10px;
         display: block;
@@ -113,7 +109,7 @@
 
       .grid_item h4 a {
         font-family: "Pacifico", cursive;
-        font-size: 18px; /* not oversized */
+        font-size: 18px;
         color: #2c2c2c;
         text-decoration: none;
       }
@@ -121,7 +117,6 @@
   </head>
 
   <body>
-    <!-- Navbar -->
     <div class="page-header">
       <form action="{% url 'recipes:search' %}" method="GET">
         {% csrf_token %}
@@ -136,14 +131,9 @@
       <a href="{% url 'recipes:about_me' %}" class="btn">About Me</a>
     </div>
 
-    <!-- Logo -->
-    <img
-      class="logo"
-      src="{% static 'recipes/images/recipes.png' %}"
-      alt="Recipes Logo"
-    />
+    <!-- Logo replaced with yellow text -->
+    <h1 class="logo-text">Recipes</h1>
 
-    <!-- Cards -->
     <div class="recipe_grid">
       {% for object in object_list %}
       <div class="grid_item">
