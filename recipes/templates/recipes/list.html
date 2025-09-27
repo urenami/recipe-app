@@ -3,7 +3,7 @@
   <head>
     <title>Recipes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {% load static %} 
+    {% load static %}
 
     <!-- Fonts to match login page -->
     <link
@@ -140,10 +140,10 @@
         <a href="{{ object.get_absolute_url }}">
           <img
             src="{% if object.image_name %}
-             {% static 'recipes/images/' %}{{ object.image_name }}
-           {% else %}
-             {{ object.pic.url }}
-           {% endif %}"
+          {% static 'recipes/images/' %}{{ object.image_name }}
+        {% else %}
+          {{ object.pic.url }}
+        {% endif %}"
             alt="{{ object.name }}"
           />
           <h4><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></h4>
