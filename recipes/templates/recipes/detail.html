@@ -124,18 +124,32 @@
     color: #ff4c4c; /* red */
     font-weight: bold;
   }
+
+  .food_image {
+    border-radius: 12px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    transition: transform 0.3s ease;
+  }
 </style>
 
 <div class="details-card">
   <h2>{{ object.name }}</h2>
   <img
     src="{% if object.image_name %}
-             {% static 'recipes/images/' %}{{ object.image_name }}
-           {% else %}
-             {{ object.pic.url }}
-           {% endif %}"
+           {% static 'recipes/images/' %}{{ object.image_name }}
+         {% else %}
+           {{ object.pic.url }}
+         {% endif %}"
     alt="{{ object.name }}"
+    class="food_image"
   />
+
   <div class="details-info">
     <p><b>Name:</b> {{ object.name }}</p>
     <p><b>Cooking Time:</b> {{ object.cooking_time }} mins</p>
