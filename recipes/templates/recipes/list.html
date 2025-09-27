@@ -3,8 +3,7 @@
   <head>
     <title>Recipes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {% load static %}
-    {% load slugify %}
+    {% load static %} {% load slugify %}
 
     <!-- Fonts to match login page -->
     <link
@@ -14,7 +13,8 @@
 
     <style>
       body {
-        background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat fixed;
+        background: url("{% static 'recipes/images/dough.jpg' %}") no-repeat
+          fixed;
         background-size: cover;
         display: flex;
         flex-direction: column;
@@ -138,7 +138,14 @@
       {% for object in object_list %}
       <div class="grid_item">
         <a href="{{ object.get_absolute_url }}">
-          <img src="{% static 'recipes/images/' %}{{ object.name|slugify }}.jpg" alt="{{ object.name }}">
+          <img
+            src="{% if object.image_name %}
+             {% static 'recipes/images/' %}{{ object.image_name }}
+           {% else %}
+             {{ object.pic.url }}
+           {% endif %}"
+            alt="{{ object.name }}"
+          />
           <h4><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></h4>
         </a>
       </div>

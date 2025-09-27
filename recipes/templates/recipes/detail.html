@@ -128,8 +128,14 @@
 
 <div class="details-card">
   <h2>{{ object.name }}</h2>
-  <img class="food_image" src="{{ object.pic.url }}" alt="{{ object.name }}" />
-
+  <img
+    src="{% if object.image_name %}
+             {% static 'recipes/images/' %}{{ object.image_name }}
+           {% else %}
+             {{ object.pic.url }}
+           {% endif %}"
+    alt="{{ object.name }}"
+  />
   <div class="details-info">
     <p><b>Name:</b> {{ object.name }}</p>
     <p><b>Cooking Time:</b> {{ object.cooking_time }} mins</p>
