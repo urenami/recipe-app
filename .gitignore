@@ -34,3 +34,5 @@ Thumbs.db
 
 # macOS system files
 .DS_Store
+
+staticfiles/

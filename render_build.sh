@@ -11,6 +11,11 @@ python manage.py migrate
 # Collect static files
 python manage.py collectstatic --noinput
 
+# Load recipes data (only if file exists)
+if [ -f recipes.json ]; then
+  python manage.py loaddata recipes.json
+fi
+
 # Create default admin if it doesn't exist
 echo "
 from django.contrib.auth import get_user_model;
